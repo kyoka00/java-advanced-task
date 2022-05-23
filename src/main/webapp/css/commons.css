@@ -1,0 +1,390 @@
+@charset "UTF-8";
+
+fieldset {
+  border: none;
+}
+
+fieldset label {
+  display: inline-block;
+  vertical-align: top;
+}
+
+fieldset.label-60 label {
+  width: 60px;
+}
+
+fieldset.label-130 label {
+  width: 130px;
+}
+
+fieldset div {
+  margin: 5px;
+}
+
+form ~ div, table ~ div {
+  margin-top: 10px;
+}
+
+table, table th, table td {
+  border: solid 1px;
+}
+
+input[readonly] {
+  background: #CCCCCC;
+  color: black;
+}
+
+.center {
+  text-align: center;
+}
+
+.required::before {
+  content: "※";
+  color: red;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+a.btn {
+  color: white;
+  text-align: center;
+  font-size: 21px;
+  font-weight: bold;
+  background-color: #87cefa;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 0px;
+  padding: 5px 20px 5px 20px;
+  text-decoration:none
+}
+
+body {
+  font-family: Miryo;
+  width: 90%;
+  margin: auto;
+}
+
+#app {
+  text-align: center;
+}
+
+table {
+  margin: auto;
+  width: 80%;
+  /* border-collapse: collapse;
+  border-spacing: 0; */
+  border: none;
+  table-layout: fixed;
+}
+
+table th {
+  background:#68a9eb;
+	font-weight: bold;
+	color:#fff;
+}
+
+table th,table td{
+  text-align: center;
+  border: none;
+}
+
+table tr:nth-child(odd){
+  background:#F7EFE3;
+}
+
+.detail_btn {
+  background-color:#004a94;
+  display: block;       /* リンクをブロックレベル化して表示 */
+  padding: 5px 10px 5px 10px;
+}
+
+.detail_btn:hover {
+  background-color:#417ebb;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/** ヘッダー **/
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user {
+  display: flex;
+  margin: 10px 200px 0 0;
+}
+
+.site_logo {
+  text-align: left;
+  margin: 10px 100px 30px 100px;
+}
+
+.logout_btn {
+  border: none;
+  border-radius: 5px;
+  background-color: #004a94;
+  padding: auto;
+  line-height: 2;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  margin: 10px;
+}
+
+.logout_btn:hover {
+  background-color:#417ebb;
+}
+
+.logout_btn img {
+  width: 20px;
+  vertical-align: middle;
+  margin: 0 5px 5px 0;
+}
+
+hr {
+  width: 80%;
+}
+
+.form {
+  width: 70%;
+  background-color: #F7EFE3;
+  border-radius: 10px;
+  margin: auto;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.btns {
+  text-align: center;
+}
+
+.basic_btn {
+  width: auto;
+  height: auto;
+  border: none;
+  border-radius: 5px;
+  background-color: #004a94;
+  padding: auto;
+  line-height: 2;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+  color: white;
+  margin: 10px;
+}
+
+.basic_btn:hover {
+  background-color:#417ebb;
+}
+
+.btn {
+  width: 80%;
+  margin: auto;
+  text-align: left;
+}
+
+.cancel_btn {
+  width: auto;
+  height: auto;
+  border: solid 1px rgb(207, 207, 207);
+  border-radius: 5px;
+  background-color: rgb(240, 240, 240);
+  padding: auto;
+  line-height: 2;
+  padding: 4px 10px 4px 10px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.cancel_btn:hover {
+  background-color:rgb(216, 216, 216);
+}
+
+/** 検索バー **/
+.search_container{
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #999;
+  display: block;
+  padding: 3px 10px;
+  margin: auto;
+  border-radius: 20px;
+  height: 2.3em;
+  width: 260px;
+  overflow: hidden;
+}
+.search_container input[type="text"]{
+  border: none;
+  height: 2.0em;
+}
+.search_container input[type="text"]:focus {
+  outline: 0;
+}
+.search_container input[type="submit"]{
+  cursor: pointer;
+  font-family: FontAwesome;
+  font-size: 1.3em;
+  border: none;
+  background: none;
+  color: #3879D9;
+  position: absolute;
+  width: 2.5em;
+  height: 2.5em;
+  right: 0;
+  top: -10px;
+  outline : none;
+}
+
+/** ログイン画面 **/
+.login_form {
+  width: 400px;
+  height: 350px;
+  position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.base_input {
+  width: 250px;
+  height: 15px;
+  padding:8px 10px;
+  border-radius:10px;
+}
+
+.login_body {
+  background-color: rgb(240, 240, 240);
+}
+
+.login_logo {
+  width: 180px;
+  height: 70px;
+  margin-top: 10px;
+}
+
+/** 登録画面 **/
+.insert {
+  width: 70%;
+  margin: auto;
+}
+
+.base-text {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	background-image: none;
+	border: 1px solid rgba(0, 0, 0, 0.16);
+	border-radius: 0;
+	color: inherit;
+	font-family: inherit;
+	font-size: 13px;
+	padding: 0.4em 0.8em;
+	width: 50%;
+  margin: 4px;
+}
+
+.base-text:focus {
+	border: 1px solid rgba(0, 0, 0, 0.32);
+	box-shadow: none;
+	outline: none;
+}
+
+textarea {
+  resize: none;
+  width: 300px;
+  height: 100px;
+}
+
+/** 確認モーダル用 **/
+#modal {
+  width: 300px;
+  border: solid 1px;
+  border-radius: 5px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #fff;
+}
+
+#modal.is-show {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+}
+
+.modal_message::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url(../images/注意.png);
+  background-size: contain;
+  vertical-align: middle;
+  margin: 10px;
+}
+
+#fadeLayer {
+  position:fixed;
+  top:0px;
+  left:0px;
+
+  width:100%;
+  height:100%;
+
+  background-color:#000000;
+  opacity:0.5;
+  visibility:hidden;
+  z-index:1;
+}
+
+footer {
+  height: 100px;
+}
+
+h1 a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.order {
+  width: 300px;
+  margin-left: auto;
+  margin-right: 10%;
+}
+
+/* 編集画面 */
+.update {
+  width: 80%;
+  margin: auto;
+}
+
+.update .form_body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.update .form_body form {
+  width: 600px;
+}
+
+.update .product_img {
+  max-width: 250px;
+  max-height: 250px;
+}
