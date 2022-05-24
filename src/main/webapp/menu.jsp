@@ -28,24 +28,28 @@
 
     <div class="btn"><a class="basic_btn regist" href="insert.jsp">新規登録</a></div>
     <p>${menuMsg}</p>
-    <form method="get" action="SearchMenuServlet" class="search_container">
-      <input type="text" size="25" placeholder="キーワード検索">
+    <form method="get" action="SearchMenuServlet" class="search_container" id ="send">
+      <input type="text" size="25" placeholder="キーワード検索" name = "searchValue">
       <input type="submit" value="&#xf002">
     </form>
 
     <table>
+    
         <div class="caption"><p>検索結果：${count}件</p></div>
         <div class="order">
-          <select class="base-text">
-            <option>並び替え</option>
-            <option>商品ID</option>
-            <option>カテゴリ</option>
-            <option>単価：安い順</option>
-            <option>単価：高い順</option>
-            <option>登録日：古い順</option>
-            <option>登録日：新しい順</option>
+
+          <select class="base-text" name = "order"  form ="send">
+            <option value ="1">並び替え</option>
+            <option value = "2">商品ID</option>
+            <option value = "3">カテゴリ</option>
+            <option value ="4"> 単価：安い順</option>
+            <option value="5">単価：高い順</option>
+            <option value ="6">登録日：古い順</option>
+            <option value ="7">登録日：新しい順</option>
           </select>
+        
         </div>
+        
       <thead>
         <tr>
           <th>商品ID</th>
@@ -63,7 +67,7 @@
             <td>${p.getName()}</td>
             <td>${p.getPrice()}</td>
             <td>${p.getCategory()}</td>
-            <td><a class="detail_btn" href="./detail.jsp" name= "detailsInfo">詳細</a></td>
+            <td><a class="detail_btn" href="./detail.jsp?productId = ${p.getProductID()}">詳細</a></td>
           </tr>
 		</c:forEach>
 		

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import db.entity.Products;
 import db.service.Search;
@@ -31,9 +32,10 @@ public class AllShowServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Products> resultList= Search.select("");
+		List<Products> resultList= Search.select("", "product_id");
+		HttpSession session = request.getSession();
 		int count = Search.count("");
-		request.setAttribute("list", resultList);
+		session.setAttribute("list", resultList);
 		request.setAttribute("count",count);
 		request.getRequestDispatcher("menu.jsp").forward(request, response);
 	}
@@ -42,9 +44,10 @@ public class AllShowServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Products> resultList= Search.select("");
+		List<Products> resultList= Search.select("", "product_id");
+		HttpSession session = request.getSession();
 		int count = Search.count("");
-		request.setAttribute("list", resultList);
+		session.setAttribute("list", resultList);
 		request.setAttribute("count",count);
 		request.getRequestDispatcher("menu.jsp").forward(request, response);
 		

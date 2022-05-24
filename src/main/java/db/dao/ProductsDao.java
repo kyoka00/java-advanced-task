@@ -13,20 +13,20 @@ import db.entity.Products;
 public class ProductsDao {
 	Connection connection;
 	private static final String SQL_COUNT = "SELECT count(*) AS count FROM products p JOIN categories c ON p.category_id = c.id WHERE p.name LIKE ? OR c.name LIKE ?";
-	private static final String SQL_WHERE = "SELECT p.product_id, p.name AS product_name,c.name AS category_name, p.price FROM products p JOIN categories c ON p.category_id = c.id WHERE p.name LIKE ? OR c.name LIKE ?";
+	private static final String SQL_WHERE = "SELECT p.product_id, p.name AS product_name,c.name AS category_name, p.price FROM products p JOIN categories c ON p.category_id = c.id WHERE p.name LIKE ? OR c.name LIKE ? ORDER BY ";
 	private static final String SQL_INSERT = "INSERT INTO products (product_id, category_id, name, price, description, created_at) VALUES (?,?,?,?,?,?)" ;
-	private static final String SQL_ORDERBY = "ORDER BY ?";
+	
 	
 	public ProductsDao(Connection connection) {
 		this.connection = connection;
 	}
 	
 	
-	public List<Products> select(String a) {
+	public List<Products> select(String searchKey, String orderby) {
 
-		try (PreparedStatement stmt = connection.prepareStatement(SQL_WHERE)) {
-			stmt.setString(1, "%"+ a +"%");
-			stmt.setString(2, "%"+ a +"%");
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_WHERE + orderby)) {
+			stmt.setString(1, "%"+ searchKey +"%");
+			stmt.setString(2, "%"+ searchKey +"%");
 			
 			ResultSet result = stmt.executeQuery();
 

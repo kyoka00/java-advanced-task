@@ -10,14 +10,14 @@ import db.utility.DbUtil;
 public class Search {
 	
 	
-	public static List<Products> select(String a) {
+	public static List<Products> select(String searchKey, String orderby) {
 		Connection connection;
 		ProductsDao productsDao;
 		List<Products> allProducts;
 		try {
 			connection = DbUtil.getConnection();
 			productsDao = new ProductsDao(connection);
-			allProducts = productsDao.select(a);
+			allProducts = productsDao.select(searchKey, orderby);
 			//int count = productsDao.count();
 			
 			//List<Object> result = new ArrayList<>();
@@ -53,9 +53,10 @@ public class Search {
 	
 	
 	
-	//public static void main(String[] args) {
-		//List<Products> newObject = select("ス");
-		//int count = count("ス");
+//	public static void main(String[] args) {
+//		String order = "p.created_at";
+//		List<Products> newObject = select("", order);
+//		//int count = count("");
 //		for(Products p: newObject) {
 //			System.out.println(p.getName());
 //		
