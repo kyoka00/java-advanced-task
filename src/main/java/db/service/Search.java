@@ -8,15 +8,16 @@ import db.entity.Products;
 import db.utility.DbUtil;
 
 public class Search {
-	//public static List<Object> selectAll() {
-	public static List<Products> selectAll() {
+	
+	
+	public static List<Products> select(String a) {
 		Connection connection;
 		ProductsDao productsDao;
 		List<Products> allProducts;
 		try {
 			connection = DbUtil.getConnection();
 			productsDao = new ProductsDao(connection);
-			allProducts = productsDao.selectAll();
+			allProducts = productsDao.select(a);
 			//int count = productsDao.count();
 			
 			//List<Object> result = new ArrayList<>();
@@ -31,14 +32,15 @@ public class Search {
 		}
 		return null;
 	}
-	public static int countAll() {
+	
+	
+	public static int count(String a) {
 		Connection connection;
 		ProductsDao productsDao;
-		List<Products> allProducts;
 		try {
 			connection = DbUtil.getConnection();
 			productsDao = new ProductsDao(connection);
-			int count = productsDao.count();
+			int count = productsDao.countSelect(a);
 			
 			return count;
 			
@@ -48,12 +50,16 @@ public class Search {
 		}
 		return 0;
 	}
-//	public static void main(String[] args) {
-//		List<Products> newObject = selectAll();
-//		int count = countAll();
+	
+	
+	
+	//public static void main(String[] args) {
+		//List<Products> newObject = select("ス");
+		//int count = count("ス");
 //		for(Products p: newObject) {
-//			System.out.println(p.getPrice());
-//		System.out.println(count);
+//			System.out.println(p.getName());
+//		
 //	}
-//		}
+		//System.out.println(count);
+		//}
 }

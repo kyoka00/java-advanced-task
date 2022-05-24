@@ -12,18 +12,22 @@ import db.entity.Products;
 
 public class ProductsDao {
 	Connection connection;
-	private static final String SQL_SELECT_ALL = "SELECT p.product_id, p.name AS product_name,c.name AS category_name, p.price FROM products p JOIN categories c ON p.category_id = c.id ORDER BY product_id";
-	private static final String SQL_COUNT = "SELECT count(*) AS count FROM products";
-	private static final String SQL_WHERE = "WHERE ? = ?";
+	private static final String SQL_COUNT = "SELECT count(*) AS count FROM products p JOIN categories c ON p.category_id = c.id WHERE p.name LIKE ? OR c.name LIKE ?";
+	private static final String SQL_WHERE = "SELECT p.product_id, p.name AS product_name,c.name AS category_name, p.price FROM products p JOIN categories c ON p.category_id = c.id WHERE p.name LIKE ? OR c.name LIKE ?";
 	private static final String SQL_INSERT = "INSERT INTO products (product_id, category_id, name, price, description, created_at) VALUES (?,?,?,?,?,?)" ;
+	private static final String SQL_ORDERBY = "ORDER BY ?";
 	
 	public ProductsDao(Connection connection) {
 		this.connection = connection;
 	}
 	
-	public List<Products> selectAll() {
+	
+	public List<Products> select(String a) {
 
-		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ALL)) {
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_WHERE)) {
+			stmt.setString(1, "%"+ a +"%");
+			stmt.setString(2, "%"+ a +"%");
+			
 			ResultSet result = stmt.executeQuery();
 
 			List<Products> allProducts = new ArrayList<Products>();
@@ -40,11 +44,11 @@ public class ProductsDao {
 			throw new RuntimeException(e);
 		}
 	}
-
-	public int count() {
+	public int countSelect(String a) {
 		Integer count = 0;
 		try(PreparedStatement stmt = connection.prepareStatement(SQL_COUNT)){
-			
+			stmt.setString(1, "%"+ a +"%");
+			stmt.setString(2, "%"+ a +"%");
 			ResultSet result = stmt.executeQuery();
 			
 			while (result.next()){

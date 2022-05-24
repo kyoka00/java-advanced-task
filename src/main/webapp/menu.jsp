@@ -14,7 +14,7 @@
   <div id="app">
 
     <div class="header">
-      <h1 class="site_logo"><a href="menu.jsp">商品管理システム</a></h1>
+      <h1 class="site_logo"><a href="AllShowServlet">商品管理システム</a></h1>
       <div class="user">
         <p class="user_name">${userInfo.getName()}さん、こんにちは</p>
         <form class="logout_form" action="logout.jsp" method="get">
@@ -28,7 +28,7 @@
 
     <div class="btn"><a class="basic_btn regist" href="insert.jsp">新規登録</a></div>
     <p>${menuMsg}</p>
-    <form method="get" action="#" class="search_container">
+    <form method="get" action="SearchMenuServlet" class="search_container">
       <input type="text" size="25" placeholder="キーワード検索">
       <input type="submit" value="&#xf002">
     </form>

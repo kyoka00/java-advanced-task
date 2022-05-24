@@ -10,7 +10,7 @@
 <body>
 
   <div class="header">
-    <h1 class="site_logo"><a href="menu.jsp">商品管理システム</a></h1>
+    <h1 class="site_logo"><a href="AllShowServlet">商品管理システム</a></h1>
     <div class="user">
       <p class="user_name">${userInfo.getName()}さん、こんにちは</p>
       <form class="logout_form" action="logout.jsp" method="get">
@@ -71,7 +71,7 @@
         </fieldset>
         <div class="btns">
           <button type="button" onclick="openModal()" class="basic_btn">登録</button>
-          <input type="button" onclick="location.href='./menu.jsp'" value="戻る" class="cancel_btn">
+          <input type="button" onclick="location.href='AllShowServlet'" value="戻る" class="cancel_btn">
         </div>
         <div id="modal">
           <p class="modal_message">登録しますか？</p>

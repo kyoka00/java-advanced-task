@@ -48,7 +48,7 @@ public class InsertServlet extends HttpServlet {
 				description = "";
 				boolean result = Insert.insert(productId, category,productName, price,  description);
 				if(result == true) {
-					url = "menu.jsp";
+					url = "AllShowServlet";
 					insertMsg = "新規情報を登録しました";
 					request.setAttribute("menuMsg",insertMsg);
 					
