@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Refresh" content="2;URL=index.html">
+<meta http-equiv="Refresh" content="2;URL=index.jsp">
 <title>ログアウト</title>
 <link href="css/commons.css" rel="stylesheet">
+<%
+	session.invalidate();
+%>
 </head>
 <body>
   <div class="header">

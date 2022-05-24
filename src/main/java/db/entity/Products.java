@@ -1,25 +1,25 @@
 package db.entity;
 
 public class Products {
-	private int product_id;
-	private int category_id;
+	private Integer productId;
 	private String name;
-	private int price;
+	private String category;
+	private Integer price;
 	private String description;
-	private String created_at;
-	private String updated_at;
+	private String createdAt;
+	private String updatedAt;
 	
-	public int getProduct_id() {
-		return product_id;
+	public String getCategory() {
+		return category;
 	}
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+	public void setCategory(String category) {
+		this.category = category;
 	}
-	public int getCategory_id() {
-		return category_id;
+	public int getProductId() {
+		return productId;
 	}
-	public void setCategory_id(int category_id) {
-		this.category_id = category_id;
+	public void setProductId(Integer product_id) {
+		this.productId = product_id;
 	}
 	public String getName() {
 		return name;
@@ -30,7 +30,7 @@ public class Products {
 	public int getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	public String getDescription() {
@@ -39,19 +39,28 @@ public class Products {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getCreated_at() {
-		return created_at;
+	public String getCreatedAt() {
+		return createdAt;
 	}
 	public void setCreated_at(String created_at) {
-		this.created_at = created_at;
+		this.createdAt = created_at;
 	}
-	public String getUpdated_at() {
-		return updated_at;
+	public String getUpdatedAt() {
+		return updatedAt;
 	}
-	public void setUpdated_at(String updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdatedAt(String updated_at) {
+		this.updatedAt = updated_at;
 	}
 	
-	
+	public Products() {
+		
+	}
+	public Products(Integer productId, String name, String category, Integer price) {
+		setProductId(productId);
+		setName(name);
+		setCategory(category);
+		setPrice(price);
+		
+	}
 	
 }

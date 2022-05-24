@@ -10,7 +10,7 @@ import db.entity.Users;
 public class UsersDao {
 	private Connection connection;
 		private static final String SQL_LOGINSEARCH="SELECT login_id, password, name FROM users WHERE login_id = ? AND password= ?";
-	
+		
 	
 	public UsersDao(Connection connection) {
 		this.connection = connection;

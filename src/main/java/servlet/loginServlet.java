@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import db.entity.Products;
 import db.entity.Users;
+import db.service.Search;
 import db.service.passCheck;
 import utilityAll.Util;
 
@@ -73,10 +76,15 @@ public class loginServlet extends HttpServlet {
 			result =passCheck.loginCheck(loginId, password);
 			if(result == true) {
 				Users u = passCheck.loginUser(loginId, password);
-				String name = u.getName();
+				session.setAttribute("userInfo",u);
 				
-				session.setAttribute("userName",name);
-				url = "insert.jsp";
+				List<Products> resultList= Search.selectAll();
+				int count = Search.countAll();
+				request.setAttribute("list", resultList);
+				request.setAttribute("count",count);
+				
+				
+				url = "menu.jsp";
 			}else {
 				msg ="IDかパスワードが間違っています";
 				request.setAttribute("msg", msg);
