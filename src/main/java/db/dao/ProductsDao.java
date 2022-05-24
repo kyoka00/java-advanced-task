@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class ProductsDao {
 	private static final String SQL_SELECT_ALL = "SELECT p.product_id, p.name AS product_name,c.name AS category_name, p.price FROM products p JOIN categories c ON p.category_id = c.id ORDER BY product_id";
 	private static final String SQL_COUNT = "SELECT count(*) AS count FROM products";
 	private static final String SQL_WHERE = "WHERE ? = ?";
-	private static final String SQL_INSERT = "INSERT INTO products (product_id, category_id, name, price, description) VALUES (?,?,?,?,?)" ;
+	private static final String SQL_INSERT = "INSERT INTO products (product_id, category_id, name, price, description, created_at) VALUES (?,?,?,?,?,?)" ;
 	
 	public ProductsDao(Connection connection) {
 		this.connection = connection;
@@ -57,14 +58,15 @@ public class ProductsDao {
 
 	}
 	
-	public void insert(Integer productId, String productName, Integer price, Integer categoryId, String description) {
+	public void insert(Integer productId, Integer categoryId, String productName, Integer price,  String description) {
 
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
 			stmt.setInt(1,productId);
-			stmt.setString(2, productName);
-			stmt.setInt(3, price);
-			stmt.setInt(4, categoryId);
+			stmt.setInt(2, categoryId);
+			stmt.setString(3, productName);
+			stmt.setInt(4, price);
 			stmt.setString(5, description);
+			stmt.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
 			
 			stmt.executeUpdate();
 			

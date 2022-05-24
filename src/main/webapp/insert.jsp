@@ -10,7 +10,7 @@
 <body>
 
   <div class="header">
-    <h1 class="site_logo"><a href="menu.html">商品管理システム</a></h1>
+    <h1 class="site_logo"><a href="menu.jsp">商品管理システム</a></h1>
     <div class="user">
       <p class="user_name">${userInfo.getName()}さん、こんにちは</p>
       <form class="logout_form" action="logout.jsp" method="get">
@@ -30,28 +30,28 @@
     </div>
   
     <div class="form_body">
-      <p class="error">エラーメッセージ</p>
+      <p class="error"></p>
   
-      <form action="InsertServlet" method="get">
+      <form action="InsertNewInfo" method="get">
         <fieldset class="label-130">
           <div>
             <label class="required">商品ID</label>
-            <input type="text" name="loginId" class="base-text">
-            <span class="error">${nullError}</span>
+            <input type="text" name="productId" class="base-text">
+            <span class="error">${nullErrorId}</span>
           </div>
           <div>
             <label class="required">商品名</label>
-            <input type="text" name="userName" class="base-text">
-            <span class="error">${nullError}</span>
+            <input type="text" name="productName" class="base-text">
+            <span class="error">${nullErrorName}</span>
           </div>
           <div>
             <label class="required">単価</label>
-            <input type="text" name="tel" class="base-text">
-            <span class="error">${nullError}</span>
+            <input type="text" name="price" class="base-text">
+            <span class="error">${nullErrorPrice}</span>
           </div>
           <div class="select_block">
             <label class="required">カテゴリ</label>
-            <select name="roleId" class="base-text">
+            <select name="category" class="base-text">
               <option value="1">筆記具</option>
               <option value="2">紙製品</option>
               <option value="3">事務消耗品</option>
@@ -66,7 +66,7 @@
           <div>
             <label>画像</label>
             <input type="file" name="file">
-            <span class="error">エラーメッセージ</span>
+            <span class="error">${insertMsg}</span>
           </div>
         </fieldset>
         <div class="btns">
@@ -85,4 +85,6 @@
   </div>
   <div id="fadeLayer"></div>
 </body>
+<script src="./js/commons.js"></script>
 </html>
+<

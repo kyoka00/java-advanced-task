@@ -12,7 +12,7 @@
 <body>
 
   <div class="header">
-    <h1 class="site_logo"><a href="menu.html">商品管理システム</a></h1>
+    <h1 class="site_logo"><a href="menu.jsp">商品管理システム</a></h1>
     <div class="user">
       <p class="user_name">${userInfo.getName()}さん、こんにちは</p>
       <form class="logout_form" action="logout.jsp" method="get">

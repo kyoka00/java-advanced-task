@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import db.service.Insert;
 import utilityAll.Util;
 
 /**
  * Servlet implementation class InsertServlet
  */
-@WebServlet("/InsertServlet")
+@WebServlet("/InsertNewInfo")
 public class InsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,14 +30,6 @@ public class InsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String productIdS = request.getParameter("productId");
 		String productName =request.getParameter("productName");
@@ -44,24 +37,50 @@ public class InsertServlet extends HttpServlet {
 		String categoryS = request.getParameter("category");
 		String description = request.getParameter("description");
 		String nullError ="必須項目です";
+		String url = "insert.jsp";
+		String insertMsg;
 		
 		if(!Util.isNullOrEmpty(productIdS) && !Util.isNullOrEmpty(productName) && !Util.isNullOrEmpty(priceS)) {
 			Integer price = Integer.parseInt(priceS);
 			Integer productId = Integer.parseInt(productIdS);
+			Integer category = Integer.parseInt(categoryS);
 			if(Util.isNullOrEmpty(description)) {
 				description = "";
+				boolean result = Insert.insert(productId, category,productName, price,  description);
+				if(result == true) {
+					url = "menu.jsp";
+					insertMsg = "新規情報を登録しました";
+					request.setAttribute("menuMsg",insertMsg);
+					
+				}else {
+					insertMsg ="新規登録に失敗しました";
+					request.setAttribute("insertMsg",insertMsg);
+				}
+				
 			}
 			
 		}else {
-			if (Util.isNullOrEmpty(productId)) {
+			insertMsg ="※の値を入力してください";
+			request.setAttribute("insertMsg",insertMsg);
+			if (Util.isNullOrEmpty(productIdS)) {
 				request.setAttribute("nullErrorId", nullError);
-			}else if(Util.isNullOrEmpty(productName)) {
+			}
+			if(Util.isNullOrEmpty(productName)) {
 				request.setAttribute("nullErrorName", nullError);
-			}else if(Util.isNullOrEmpty(priceS)) {
+			}
+			if(Util.isNullOrEmpty(priceS)) {
 				request.setAttribute("nullErrorPrice", nullError);
 			}
 		}
+		request.getRequestDispatcher(url).forward(request, response);
+	
 		
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 }

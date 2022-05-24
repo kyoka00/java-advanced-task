@@ -14,7 +14,7 @@
   <div id="app">
 
     <div class="header">
-      <h1 class="site_logo"><a href="menu.html">商品管理システム</a></h1>
+      <h1 class="site_logo"><a href="menu.jsp">商品管理システム</a></h1>
       <div class="user">
         <p class="user_name">${userInfo.getName()}さん、こんにちは</p>
         <form class="logout_form" action="logout.jsp" method="get">
@@ -27,7 +27,7 @@
     <hr>
 
     <div class="btn"><a class="basic_btn regist" href="insert.jsp">新規登録</a></div>
-    <p>成功メッセージ</p>
+    <p>${menuMsg}</p>
     <form method="get" action="#" class="search_container">
       <input type="text" size="25" placeholder="キーワード検索">
       <input type="submit" value="&#xf002">
@@ -61,8 +61,8 @@
           <tr>
             <td>${p.getProductId()}</td>
             <td>${p.getName()}</td>
-            <td>${p.getCategory()}</td>
             <td>${p.getPrice()}</td>
+            <td>${p.getCategory()}</td>
             <td><a class="detail_btn" href="./detail.jsp" name= "detailsInfo">詳細</a></td>
           </tr>
 		</c:forEach>
