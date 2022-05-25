@@ -13,7 +13,7 @@ import db.entity.Products;
 public class ProductsDao {
 	Connection connection;
 	private static final String SQL_COUNT = "SELECT count(*) AS count FROM products p JOIN categories c ON p.category_id = c.id WHERE p.name LIKE ? OR c.name LIKE ?";
-	private static final String SQL_WHERE = "SELECT p.product_id, p.name AS product_name,c.name AS category_name, p.price FROM products p JOIN categories c ON p.category_id = c.id WHERE p.name LIKE ? OR c.name LIKE ? ORDER BY ";
+	private static final String SQL_WHERE = "SELECT p.product_id, p.name AS product_name,c.name AS category_name, p.price, p.description FROM products p JOIN categories c ON p.category_id = c.id WHERE p.name LIKE ? OR c.name LIKE ? ORDER BY ";
 	private static final String SQL_INSERT = "INSERT INTO products (product_id, category_id, name, price, description, created_at) VALUES (?,?,?,?,?,?)" ;
 	
 	
@@ -34,7 +34,7 @@ public class ProductsDao {
 
 			while (result.next()) {
 				Products p = new Products(result.getInt("product_id"), result.getString("product_name"),
-						result.getString("category_name"), result.getInt("price"));
+						result.getString("category_name"), result.getInt("price"),result.getString("description"));
 				allProducts.add(p);
 			}
 			

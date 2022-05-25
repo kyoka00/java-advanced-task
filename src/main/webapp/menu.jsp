@@ -61,13 +61,14 @@
       </thead>
       <tbody>
       
-		<c:forEach var="p" items ="${list}">
+		<c:forEach var="p" items ="${list}" varStatus ="status">
           <tr>
             <td>${p.getProductId()}</td>
             <td>${p.getName()}</td>
             <td>${p.getPrice()}</td>
             <td>${p.getCategory()}</td>
-            <td><a class="detail_btn" href="./detail.jsp?productId = ${p.getProductID()}">詳細</a></td>
+            <td><a class="detail_btn" href="./GetDetail?productNo=${status.count}">
+            詳細</a></td>
           </tr>
 		</c:forEach>
 		

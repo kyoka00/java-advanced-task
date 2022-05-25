@@ -1,13 +1,21 @@
 package db.entity;
 
 public class Categories {
-	private int id;
+	private Integer id;
 	private String name;
 	private String created_at;
 	private String updated_at;
 	
+	public Categories() {
+		
+	}
 	
-	public int getId() {
+	public Categories(Integer id, String name) {
+		setId(id);
+		setName(name);
+	}
+	
+	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -31,6 +39,4 @@ public class Categories {
 	public void setUpdated_at(String updated_at) {
 		this.updated_at = updated_at;
 	}
-	
-	
 }

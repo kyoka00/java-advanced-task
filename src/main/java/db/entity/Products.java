@@ -55,12 +55,12 @@ public class Products {
 	public Products() {
 		
 	}
-	public Products(Integer productId, String name, String category, Integer price) {
+	public Products(Integer productId, String name, String category, Integer price, String description) {
 		setProductId(productId);
 		setName(name);
 		setCategory(category);
 		setPrice(price);
-		
+		setDescription(description);
 	}
 	
 }

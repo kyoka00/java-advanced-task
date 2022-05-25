@@ -29,32 +29,32 @@
         <fieldset class="label-130">
           <div>
             <label>商品ID</label>
-            <input type="text" name="loginId" value="10001" class="base-text">
+            <input type="text" name="loginId" value="${chosenProduct.getProductId()}" class="base-text">
             <span class="error">エラーメッセージ</span>
           </div>
           <div>
             <label>商品名</label>
-            <input type="text" name="userName" value="マッキー(黒)" class="base-text">
+            <input type="text" name="userName" value="${chosenProduct.getName()}" class="base-text">
             <span class="error">エラーメッセージ</span>
           </div>
           <div>
             <label>単価</label>
-            <input type="text" name="tel" value="165" class="base-text">
+            <input type="text" name="tel" value="${chosenProduct.getPrice()}" class="base-text">
             <span class="error">エラーメッセージ</span>
           </div>
           <div>
             <label>カテゴリ</label> <select name="roleId" class="base-text">
-              <option value="1" selected>ペン</option>
-              <option value="2">ノート</option>
-              <option value="3">消しゴム</option>
-              <option value="4">のり</option>
+             <option value="1">筆記具</option>
+              <option value="2">紙製品</option>
+              <option value="3">事務消耗品</option>
+              <option value="4">オフィス機器</option>
+              <option value="5">雑貨</option>
             </select>
           </div>
           <div>
             <label>商品説明</label>
             <textarea name="description" class="base-text">
-ゼブラ株式会社
-線の太さ：太6.0mm、細1.5～2.0mm
+				${chosenProduct.getDescription()}
             </textarea>
           </div>
           <div>

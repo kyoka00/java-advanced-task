@@ -27,32 +27,32 @@
   <div class="update">
     <div class="form_body">
       <div class="img_block">
-        <img src="images/マッキー.png" class="product_img"><br>
+        <img src="" class="product_img"><br>
       </div>
-      <form action="menu.html" method="get">
+      <form action="menu.jsp" method="get">
         <fieldset class="label-130 product_block">
-          <p class="error">エラーメッセージ</p>
+          <p class="error"></p>
           <div>
+          
             <label>商品ID</label>
-            <input type="text" name="loginId" value="10001" readonly class="base-text">
+            <input type="text" name="productId" value= "${chosenProduct.getProductId()}" readonly class="base-text">
           </div>
           <div>
             <label>商品名</label>
-            <input type="text" name="userName" value="マッキー(黒)" readonly class="base-text">
+            <input type="text" name="productName" value="${chosenProduct.getName()}" readonly class="base-text">
           </div>
           <div>
             <label>単価</label>
-            <input type="text" name="tel" value="165" readonly class="base-text">
+            <input type="text" name="price" value="${chosenProduct.getPrice()}" readonly class="base-text">
           </div>
           <div>
             <label>カテゴリ</label>
-            <input type="text" name="roleName" value="ペン" readonly class="base-text">
+            <input type="text" name="category" value="${chosenProduct.getCategory()}" readonly class="base-text">
           </div>
           <div>
             <label>商品説明</label>
             <textarea name="description" readonly class="base-text" style="background-color: rgb(209, 209, 209);">
-ゼブラ株式会社
-線の太さ：太6.0mm、細1.5～2.0mm
+				${chosenProduct.getDescription()}
             </textarea>
           </div>
         </fieldset>
