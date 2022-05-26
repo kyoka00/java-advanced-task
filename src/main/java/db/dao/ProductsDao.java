@@ -13,8 +13,10 @@ import db.entity.Products;
 public class ProductsDao {
 	Connection connection;
 	private static final String SQL_COUNT = "SELECT count(*) AS count FROM products p JOIN categories c ON p.category_id = c.id WHERE p.name LIKE ? OR c.name LIKE ?";
-	private static final String SQL_WHERE = "SELECT p.product_id, p.name AS product_name,c.name AS category_name, p.price, p.description FROM products p JOIN categories c ON p.category_id = c.id WHERE p.name LIKE ? OR c.name LIKE ? ORDER BY ";
+	private static final String SQL_WHERE = "SELECT p.product_id, p.name AS product_name,c.id AS category_id,c.name AS category_name, p.price, p.description FROM products p JOIN categories c ON p.category_id = c.id WHERE p.name LIKE ? OR c.name LIKE ? ORDER BY ";
 	private static final String SQL_INSERT = "INSERT INTO products (product_id, category_id, name, price, description, created_at) VALUES (?,?,?,?,?,?)" ;
+	private static final String SQL_UPDATE ="UPDATE products SET product_id = ?,  name= ?, price = ?, category_id = ?, description= ?, updated_at = ? WHERE product_id = ?";
+	private static final String SQL_DELETE ="DELETE FROM products WHERE product_id =?";
 	
 	
 	public ProductsDao(Connection connection) {
@@ -33,7 +35,7 @@ public class ProductsDao {
 			List<Products> allProducts = new ArrayList<Products>();
 
 			while (result.next()) {
-				Products p = new Products(result.getInt("product_id"), result.getString("product_name"),
+				Products p = new Products(result.getInt("product_id"),result.getString("product_name"), result.getInt("category_id"),
 						result.getString("category_name"), result.getInt("price"),result.getString("description"));
 				allProducts.add(p);
 			}
@@ -79,4 +81,35 @@ public class ProductsDao {
 			throw new RuntimeException(e);
 		}
 	}
+	
+public void update(Integer productId, Integer categoryId, String productName, Integer price,  String description) {
+
+	try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
+		stmt.setInt(1,productId);
+		stmt.setString(2, productName);
+		stmt.setInt(3, price);
+		stmt.setInt(4, categoryId);
+		stmt.setString(5, description);
+		stmt.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
+		stmt.setInt(7, productId);
+		
+		stmt.executeUpdate();
+		
+
+	} catch (SQLException e) {
+		throw new RuntimeException(e);
+	}
+}
+public void delete(Integer productId) {
+
+	try (PreparedStatement stmt = connection.prepareStatement(SQL_DELETE)) {
+		stmt.setInt(1,productId);
+		
+		stmt.executeUpdate();
+		
+
+	} catch (SQLException e) {
+		throw new RuntimeException(e);
+	}
+}
 }

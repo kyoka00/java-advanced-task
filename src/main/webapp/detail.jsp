@@ -29,9 +29,11 @@
       <div class="img_block">
         <img src="" class="product_img"><br>
       </div>
-      <form action="menu.jsp" method="get">
+      <form action="DeleteServlet" method="get">
         <fieldset class="label-130 product_block">
-          <p class="error"></p>
+          <c:if test = "${not empty msgId}">
+   	 			<p class="error">${deleteMsg}</p>
+    		</c:if>
           <div>
           
             <label>商品ID</label>
@@ -59,7 +61,7 @@
         <div>
           <div class="btns">
             <input type="button" onclick="openModal()" value="削除" class="basic_btn">
-            <input type="button" onclick="location.href='./updateInput.jsp'" value="編集" class="basic_btn">
+            <input type="button" onclick="location.href='GetCategory'" value="編集" class="basic_btn">
             <input type="button" onclick="location.href='AllShowServlet'" value="戻る" class="cancel_btn">
           </div>
           <div id="modal">
@@ -75,4 +77,5 @@
   </div>
   <div id="fadeLayer"></div>
 </body>
+<script src="./js/commons.js"></script>
 </html>

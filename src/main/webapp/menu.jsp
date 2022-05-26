@@ -27,7 +27,10 @@
     <hr>
 
     <div class="btn"><a class="basic_btn regist" href="insert.jsp">新規登録</a></div>
-    <p>${menuMsg}</p>
+      <c:if test = "${not empty menuMsg }">
+    	<p>${menuMsg}</p>
+    </c:if>
+    
     <form method="get" action="SearchMenuServlet" class="search_container" id ="send">
       <input type="text" size="25" placeholder="キーワード検索" name = "searchValue">
       <input type="submit" value="&#xf002">

@@ -3,12 +3,19 @@ package db.entity;
 public class Products {
 	private Integer productId;
 	private String name;
+	private Integer categoryId;
 	private String category;
 	private Integer price;
 	private String description;
 	private String createdAt;
 	private String updatedAt;
 	
+	public Integer getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
+	}
 	public String getCategory() {
 		return category;
 	}
@@ -55,9 +62,10 @@ public class Products {
 	public Products() {
 		
 	}
-	public Products(Integer productId, String name, String category, Integer price, String description) {
+	public Products(Integer productId, String name, Integer categoryId, String category, Integer price, String description) {
 		setProductId(productId);
 		setName(name);
+		setCategoryId(categoryId);
 		setCategory(category);
 		setPrice(price);
 		setDescription(description);

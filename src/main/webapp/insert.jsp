@@ -30,7 +30,7 @@
     </div>
   
     <div class="form_body">
-      <p class="error"></p>
+      <p class="error">${insertMsg}</p>
   
       <form action="InsertNewInfo" method="get">
         <fieldset class="label-130">
@@ -66,7 +66,7 @@
           <div>
             <label>画像</label>
             <input type="file" name="file">
-            <span class="error">${insertMsg}</span>
+            <span class="error"></span>
           </div>
         </fieldset>
         <div class="btns">
