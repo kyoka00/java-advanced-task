@@ -53,7 +53,7 @@ public class InsertServlet extends HttpServlet {
 					request.setAttribute("menuMsg",insertMsg);
 					
 				}else {
-					insertMsg ="新規登録に失敗しました";
+					insertMsg ="商品IDが重複しています";
 					request.setAttribute("insertMsg",insertMsg);
 				}
 				
@@ -63,13 +63,13 @@ public class InsertServlet extends HttpServlet {
 			insertMsg ="※の値を入力してください";
 			request.setAttribute("insertMsg",insertMsg);
 			if (Util.isNullOrEmpty(productIdS)) {
-				request.setAttribute("nullErrorId", nullError);
+				request.setAttribute("nullErrorIdInsert", nullError);
 			}
 			if(Util.isNullOrEmpty(productName)) {
-				request.setAttribute("nullErrorName", nullError);
+				request.setAttribute("nullErrorNameInsert", nullError);
 			}
 			if(Util.isNullOrEmpty(priceS)) {
-				request.setAttribute("nullErrorPrice", nullError);
+				request.setAttribute("nullErrorPriceInsert", nullError);
 			}
 		}
 		request.getRequestDispatcher(url).forward(request, response);

@@ -16,7 +16,7 @@
     <div class="header">
       <h1 class="site_logo"><a href="AllShowServlet">商品管理システム</a></h1>
       <div class="user">
-        <p class="user_name">${userInfo.getName()}さん、こんにちは</p>
+        <p class="user_name">${fn:escapeXml(userInfo.getName())}さん、こんにちは</p>
         <form class="logout_form" action="logout.jsp" method="get">
           <button class="logout_btn" type="submit">
             <img src="images/ドアアイコン.png">ログアウト</button>
@@ -26,7 +26,7 @@
 
     <hr>
 
-    <div class="btn"><a class="basic_btn regist" href="insert.jsp">新規登録</a></div>
+    <div class="btn"><a class="basic_btn regist" href="GetCategory">新規登録</a></div>
       <c:if test = "${not empty menuMsg }">
     	<p>${menuMsg}</p>
     </c:if>
@@ -66,10 +66,10 @@
       
 		<c:forEach var="p" items ="${list}" varStatus ="status">
           <tr>
-            <td>${p.getProductId()}</td>
-            <td>${p.getName()}</td>
-            <td>${p.getPrice()}</td>
-            <td>${p.getCategory()}</td>
+            <td>${fn:escapeXml(p.getProductId())}</td>
+            <td>${fn:escapeXml(p.getName())}</td>
+            <td>${fn:escapeXml(p.getPrice())}</td>
+            <td>${fn:escapeXml(p.getCategory())}</td>
             <td><a class="detail_btn" href="./GetDetail?productNo=${status.count}">
             詳細</a></td>
           </tr>

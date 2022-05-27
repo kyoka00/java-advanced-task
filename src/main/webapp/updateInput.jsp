@@ -16,7 +16,7 @@
   <div class="header">
     <h1 class="site_logo"><a href="AllShowServlet">商品管理システム</a></h1>
     <div class="user">
-      <p class="user_name">${userInfo.getName()}さん、こんにちは</p>
+      <p class="user_name">${fn:escapeXml(userInfo.getName())}さん、こんにちは</p>
       <form class="logout_form" action="logout.jsp" method="get">
         <button class="logout_btn" type="submit">
           <img src="images/ドアアイコン.png">ログアウト</button>
@@ -37,7 +37,7 @@
         <fieldset class="label-130">
           <div>
             <label>商品ID</label>
-            <input type="text" name="productId" value="${chosenProduct.getProductId()}" class="base-text">
+            <input type="text" name="productId" value="${fn:escapeXml(chosenProduct.getProductId())}" class="base-text">
             
             <c:if test = "${not empty msg }">
     			<span class="error">${nullErrorId}</span>
@@ -45,7 +45,7 @@
           </div>
           <div>
             <label>商品名</label>
-            <input type="text" name="productName" value="${chosenProduct.getName()}" class="base-text">
+            <input type="text" name="productName" value="${fn:escapeXml(chosenProduct.getName())}" class="base-text">
             
             <c:if test = "${not empty msg }">
     			<p class="error">${nullErrorName}</p>
@@ -53,7 +53,7 @@
           </div>
           <div>
             <label>単価</label>
-            <input type="text" name="price" value="${chosenProduct.getPrice()}" class="base-text">
+            <input type="text" name="price" value="${fn:escapeXml(chosenProduct.getPrice())}" class="base-text">
             <c:if test = "${not empty msg }">
     			<span class="error">${nullErrorPrice}</span>
     		</c:if>
@@ -62,7 +62,7 @@
             <label>カテゴリ</label> <select name="category" class="base-text" >
             
              <c:forEach var= "c" items="${categoriesList}" varStatus = "status">
-             	<option value="${c.getId()}" <c:if test="${c.getId() == chosenProduct.getCategoryId()}">selected</c:if>>${c.getName()}</option>
+             	<option value="${fn:escapeXml(c.getId())}" <c:if test="${fn:escapeXml(c.getId() == chosenProduct.getCategoryId())}">selected</c:if>>${fn:escapeXml(c.getName())}</option>
              </c:forEach>
              
             </select>
@@ -71,7 +71,7 @@
           <div>
             <label>商品説明</label>
             <textarea name="description" class="base-text">
-				${chosenProduct.getDescription()}
+				${fn:escapeXml(chosenProduct.getDescription())}
             </textarea>
           </div>
           <div>

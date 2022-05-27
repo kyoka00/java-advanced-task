@@ -15,14 +15,14 @@ import db.service.CategoryService;
 /**
  * Servlet implementation class GetCategory
  */
-@WebServlet("/GetCategory")
-public class GetCategory extends HttpServlet {
+@WebServlet("/GetCategoryForUpdate")
+public class GetCategoryForUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetCategory() {
+    public GetCategoryForUpdate() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,7 +35,7 @@ public class GetCategory extends HttpServlet {
 
 		request.setAttribute("categoriesList", resultList);
 
-		request.getRequestDispatcher("insert.jsp").forward(request, response);
+		request.getRequestDispatcher("updateInput.jsp").forward(request, response);
 	}
 
 	/**

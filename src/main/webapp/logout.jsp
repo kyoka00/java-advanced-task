@@ -8,7 +8,9 @@
 <title>ログアウト</title>
 <link href="css/commons.css" rel="stylesheet">
 <%
+
 	session.invalidate();
+	String msg = "ログアウトしました";
 %>
 </head>
 <body>
@@ -17,7 +19,7 @@
   </div>
   <div class="center">
     <p>
-      ログアウトしました。<br> ※２秒後にTOP画面に遷移します。
+     <%= msg %><br> ※２秒後にTOP画面に遷移します。
     </p>
   </div>
 </body>

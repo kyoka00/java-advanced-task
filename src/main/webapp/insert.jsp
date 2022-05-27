@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +14,7 @@
   <div class="header">
     <h1 class="site_logo"><a href="AllShowServlet">商品管理システム</a></h1>
     <div class="user">
-      <p class="user_name">${userInfo.getName()}さん、こんにちは</p>
+      <p class="user_name">${fn:escapeXml(userInfo.getName())}さん、こんにちは</p>
       <form class="logout_form" action="logout.jsp" method="get">
         <button class="logout_btn" type="submit">
           <img src="images/ドアアイコン.png">ログアウト</button>
@@ -30,33 +32,42 @@
     </div>
   
     <div class="form_body">
+    <c:if test= "${not empty insertMsg}">
       <p class="error">${insertMsg}</p>
-  
+ 	 </c:if>
       <form action="InsertNewInfo" method="get">
         <fieldset class="label-130">
           <div>
             <label class="required">商品ID</label>
             <input type="text" name="productId" class="base-text">
-            <span class="error">${nullErrorId}</span>
+            <c:if test= "${not empty nullErrorIdInsert}">
+     		 	<p class="error">${nullErrorIdInsert}</p>
+ 			 </c:if>
+            
+            
           </div>
           <div>
             <label class="required">商品名</label>
             <input type="text" name="productName" class="base-text">
-            <span class="error">${nullErrorName}</span>
+            <c:if test= "${not empty nullErrorNameInsert}">
+     		 <p class="error">${nullErrorNameInsert}</p>
+ 			 </c:if>
+            
           </div>
           <div>
             <label class="required">単価</label>
             <input type="text" name="price" class="base-text">
-            <span class="error">${nullErrorPrice}</span>
+            <c:if test= "${not empty nullErrorPriceInsert}">
+      			<p class="error">${nullErrorPriceInsert}</p>
+ 	 		</c:if>
+            
           </div>
           <div class="select_block">
             <label class="required">カテゴリ</label>
             <select name="category" class="base-text">
-              <option value="1">筆記具</option>
-              <option value="2">紙製品</option>
-              <option value="3">事務消耗品</option>
-              <option value="4">オフィス機器</option>
-              <option value="5">雑貨</option>
+              <c:forEach var= "c" items="${categoriesList}" varStatus = "status">
+             	<option value="${fn:escapeXml(c.getId())}">${fn:escapeXml(c.getName())}</option>
+             </c:forEach>
             </select>
           </div>
           <div>
